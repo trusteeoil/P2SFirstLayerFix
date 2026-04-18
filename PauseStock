@@ -239,13 +239,15 @@ M620.10 A1 F{flush_volumetric_speeds[initial_no_support_extruder]/2.4053*60} H{n
   M400
 
 
-;Change from M104 to M109, 104 is non-blocking, 109 is. 
-;It makes no sense as the stock gcode had it go 80c cooler then two steps later goes to first layer
-;temp so the strand never cools. This might be a typo on Bambu side, they did M104 instead of M109. 
-  M109 S{nozzle_temperature_initial_layer[initial_no_support_extruder]-80} A
+;Removed the stock M104 as it was pointless as its a no wait
+;and in two steps it's back to raising the temp for metal plate wipes. 
+;So it might be better to do two metal plate wipes as it 
+;drops the temp to 140c anyways at the end on the second wipe. 
 
 ;===== wipe right nozzle start =====
   M1002 gcode_claim_action : 14
+  G150 T{nozzle_temperature_initial_layer[initial_no_support_extruder]}
+  M400
   G150 T{nozzle_temperature_initial_layer[initial_no_support_extruder]}
   M400
   
