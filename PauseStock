@@ -239,17 +239,19 @@ M620.10 A1 F{flush_volumetric_speeds[initial_no_support_extruder]/2.4053*60} H{n
   M400
 
 
-;Removed the stock M104 as it was pointless as its a no wait
+;Removed the stock M104 as it was pointless as its a no wait command
 ;and in two steps it's back to raising the temp for metal plate wipes. 
-;So it might be better to do two metal plate wipes as it 
-;drops the temp to 140c anyways at the end on the second wipe. 
 
 ;===== wipe right nozzle start =====
   M1002 gcode_claim_action : 14
+;G150 is a Metal plate wipe, this is the first wipe, heats to first layer temp, wipes in circluar motion, then silicone wipe, cools 
+;down to 140c while nozzle touches metal plate, then a second wipe at silicone brush. 
   G150 T{nozzle_temperature_initial_layer[initial_no_support_extruder]}
-  M400
+  M400 ;pause, wait for previous command to finish. 
+;Metal plate wipe 2, heats to first layer temp, wipes in circluar motion, then silicone wipe, cools 
+;down to 140c while nozzle touches metal plate, then a second wipe at silicone brush. 
   G150 T{nozzle_temperature_initial_layer[initial_no_support_extruder]}
-  M400
+  M400 ;pause, wait for previous command to finish. 
   
 {if filament_type[current_extruder] == "PC"}
   M109 S170 A
