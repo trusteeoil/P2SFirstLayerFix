@@ -248,6 +248,9 @@ M620.10 A1 F{flush_volumetric_speeds[initial_no_support_extruder]/2.4053*60} H{n
 ;down to 140c while nozzle touches metal plate, then a second wipe at silicone brush. 
   G150 T{nozzle_temperature_initial_layer[initial_no_support_extruder]}
   M400 ;pause, wait for previous command to finish. 
+
+  G150.1 F8000 ;Silcone brush wipe
+
 ;Metal plate wipe 2, heats to first layer temp, wipes in circluar motion, then silicone wipe, cools 
 ;down to 140c while nozzle touches metal plate, then a second wipe at silicone brush. 
   G150 T{nozzle_temperature_initial_layer[initial_no_support_extruder]}
