@@ -263,9 +263,14 @@ M620.10 A1 F{flush_volumetric_speeds[initial_no_support_extruder]/2.4053*60} H{n
 ;===== wipe left nozzle end =====
 
 
-
-
-
+; ---- inspection pause ----
+  G90          ; absolute
+  G1 X128 Y128 F20000 ; move nozzle to center
+  G91          ; relative
+  G1 Z60 F1200 ; drop plate 60mm for nozzle inspection
+  G4 P20000    ; pause 20 seconds
+  G1 Z-60 F1200 ; raise plate back up
+  G90          ; back to absolute
 
 
 
