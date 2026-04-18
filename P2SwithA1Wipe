@@ -249,7 +249,7 @@ M620.10 A1 F{flush_volumetric_speeds[initial_no_support_extruder]/2.4053*60} H{n
   G0 X128 Y261 F30000 ; move to exposed steel tab
   G380 S3 Z-5 F1200 ; probe steel surface
   G1 Z2 F1200
-  G0 Z-1.01 F1200 ; press nozzle into steel
+  G0 Z-0.5 F1200 ; press nozzle into steel
 
   G91
   G2 I1 J0 X2 Y0 F500.1
@@ -284,7 +284,7 @@ M620.10 A1 F{flush_volumetric_speeds[initial_no_support_extruder]/2.4053*60} H{n
   G0 X138 Y261 F30000 ; offset 10mm right of pass 1 to avoid filament debris
   G380 S3 Z-5 F1200 ; probe again, nozzle cleaner now so height should be more accurate
   G1 Z2 F1200
-  G0 Z-1.01 F1200
+  G0 Z-0.5 F1200
 
   G91
   G2 I1 J0 X2 Y0 F500.1
