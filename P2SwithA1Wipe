@@ -246,6 +246,25 @@ M620.10 A1 F{flush_volumetric_speeds[initial_no_support_extruder]/2.4053*60} H{n
   M109 S{nozzle_temperature_initial_layer[initial_no_support_extruder]} A
   G90
   G1 Z5 F1200 ; safe Z before moving to tab
+
+;----- tap sequence - rough clean on fresh steel before circle wipe -----
+  G0 X108 Y261 F30000
+  G380 S3 Z-5 F1200
+  G1 Z2 F1200
+  G0 X112 F10000
+  G380 S3 Z-5 F1200
+  G1 Z2 F1200
+  G0 X116 F10000
+  G380 S3 Z-5 F1200
+  G1 Z2 F1200
+  G0 X120 F10000
+  G380 S3 Z-5 F1200
+  G1 Z2 F1200
+  G0 X124 F10000
+  G380 S3 Z-5 F1200
+  G1 Z5 F1200
+
+;----- circle wipe at X128, fresh steel -----
   G0 X128 Y261 F30000 ; move to exposed steel tab
   G380 S3 Z-5 F1200 ; probe steel surface
   G1 Z2 F1200
@@ -273,6 +292,7 @@ M620.10 A1 F{flush_volumetric_speeds[initial_no_support_extruder]/2.4053*60} H{n
   G2 I1 J0 X2
   G2 I-0.75 J0 X-1.5
   G90
+
 ;----- brush wipe at 140c between passes -----
   M109 S140 A ; cool to 140c while nozzle stays on steel
   M106 S0 ; fan off
